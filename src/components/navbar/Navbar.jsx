@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './navbar.scss';
 import SearchIcon from '@mui/icons-material/Search';
 import LanguageIcon from '@mui/icons-material/Language';
@@ -7,9 +7,11 @@ import FullscreenOutlinedIcon from '@mui/icons-material/FullscreenOutlined';
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import ProfileImage from '../../assets/orderAdminIcon.png'
+import { DarkModeContext } from '../../context/darkModeContext';
 
 
 const Navbar = () => {
+  const { dispatch } = useContext(DarkModeContext);
   return (
     <div className='navbar'>
       <div className='wrapper'>
@@ -24,7 +26,7 @@ const Navbar = () => {
             English
           </div>
           <div className='item'>
-            <DarkModeOutlinedIcon className='icon' />
+            <DarkModeOutlinedIcon className='icon' onClick={() => dispatch({ type: 'TOGGLE' })} />
             Dark
           </div>
           <div className='item'>
@@ -39,7 +41,7 @@ const Navbar = () => {
             <div className='counter'>2</div>
           </div>
           <div className='item'>
-            <img 
+            <img
               src={ProfileImage}
               className='avatar'
               alt=''
